@@ -13,9 +13,9 @@ class nagios::target {
   # files are places. This MUST be the same of $::nagios::customconfigdir
   # HINT: Do not mess with default path names...
 
-  $customconfigdir = $::nagios_customconfigdir ? {
-    ''      => '/etc/nagios/auto.d',
-    default => $::nagios_customconfigdir,
+  $customconfigdir = $nagios::customconfigdir ? {
+    ''      => '/etc/nagios3/auto.d',
+    default => $nagios::customconfigdir,
   }
 
   # TODO: Find a smarter solution that doesn't requre TopScope Variables
