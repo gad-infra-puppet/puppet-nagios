@@ -7,7 +7,7 @@
 # Usage:
 # include nagios::target
 #
-class nagios::target {
+class nagios::target ($hostgroups = false) {
 
   # This variable defines where nagios automatically generated 
   # files are places. This MUST be the same of $::nagios::customconfigdir
@@ -20,9 +20,16 @@ class nagios::target {
 
   # TODO: Find a smarter solution that doesn't requre TopScope Variables
   $magic_tag = get_magicvar($::nagios_grouplogic)
-
-  nagios::host { $fqdn: 
-    use => 'generic-host',
+ 
+  if hostgroups {
+    nagios::host { $fqdn: 
+      use        => 'generic-host',
+      hostgroups => $hostgroups,
+    }
+  } else {
+    nagios::host { $fqdn: 
+      use => 'generic-host',
+    }
   }
 
   nagios::baseservices { $fqdn:
