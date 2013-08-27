@@ -219,7 +219,8 @@ class nagios (
   $pid_file            = params_lookup( 'pid_file' ),
   $data_dir            = params_lookup( 'data_dir' ),
   $log_dir             = params_lookup( 'log_dir' ),
-  $log_file            = params_lookup( 'log_file' )
+  $log_file            = params_lookup( 'log_file' ),
+  $alert_mail          = 'root@localhost',
   ) inherits nagios::params {
 
   $bool_check_external_commands=any2bool($check_external_commands)

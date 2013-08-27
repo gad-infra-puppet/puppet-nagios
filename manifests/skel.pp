@@ -6,7 +6,7 @@
 # Usage:
 # Autoincluded by nagios class
 #
-class nagios::skel {
+class nagios::skel($alert_mail = $nagios::alert_mail) {
 
   include nagios
 
