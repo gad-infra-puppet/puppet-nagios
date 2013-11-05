@@ -13,6 +13,7 @@
 define nagios::plugin (
   $source = '',
   $nrpe_cfg = '',
+  $plugin_cfg = '',
   $enable = true
   ) {
 
