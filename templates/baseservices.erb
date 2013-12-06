@@ -47,7 +47,7 @@ define service {
 #    use                 <%= use %>
 #}
 
-<% if scope.lookupvar("ntp_server") != "" and scope.lookupvar("ntp_server") != :undefined -%>
+<% if scope.lookupvar("ntp_server") == "true" -%>
 # NTP Sync
 define service {
     host_name           <%= host_name %>
