@@ -7,7 +7,7 @@
 # Usage:
 # include nagios::target
 #
-class nagios::target ($hostgroups = false, $use_hostname = false) {
+class nagios::target ($ip = $fqdn, $hostgroups = false, $use_hostname = false) {
 
   # This variable defines where nagios automatically generated 
   # files are places. This MUST be the same of $::nagios::customconfigdir
@@ -30,11 +30,13 @@ class nagios::target ($hostgroups = false, $use_hostname = false) {
   if hostgroups {
     nagios::host { $host_name: 
       use        => 'generic-host',
+      ip         => $ip,
       hostgroups => $hostgroups,
     }
   } else {
     nagios::host { $host_name: 
       use => 'generic-host',
+      ip         => $ip,
     }
   }
 
